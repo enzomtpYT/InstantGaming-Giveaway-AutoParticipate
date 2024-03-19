@@ -5,5 +5,5 @@ Userscript to automatically participate on Instant Gaming giveaways
 
 2- Click [here](https://github.com/enzomtpYT/InstantGaming-Giveaway-AutoParticipate/raw/main/participate.user.js) to install the script
 
-# Usage
+## Usage
 Open an Instant Gaming giveaway page and let it do his thing
