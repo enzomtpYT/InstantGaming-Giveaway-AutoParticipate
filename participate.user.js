@@ -8,8 +8,8 @@
 // @run-at       document-idle
 // @grant        none
 // @license      MIT
-// @downloadURL https://github.com
-// @updateURL https://github.com
+// @downloadURL https://github.com/enzomtpYT/InstantGaming-Giveaway-AutoParticipate/raw/main/participate.user.js
+// @updateURL https://github.com/enzomtpYT/InstantGaming-Giveaway-AutoParticipate/raw/main/participate.user.js
 // ==/UserScript==
 
 (function() {
