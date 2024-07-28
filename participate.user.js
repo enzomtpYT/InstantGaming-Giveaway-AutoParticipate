@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Instant Gaming Auto Giveaway
 // @description  A script that automatically click on participate buttons on Instant-Gaming.
-// @version      1.1
+// @version      1.2
 // @author       enzomtp
 // @namespace    https://github.com/enzomtpYT/InstantGamingGiveawayList
 // @match        *://www.instant-gaming.com/*/giveaway/*
@@ -15,6 +15,10 @@
 
 (function() {
   "use strict";
+
+  function openInNewTab(url) {
+       window.open(url, '_blank');
+  }
 
   function participate(){
     // Get the participate button element.
@@ -40,10 +44,15 @@
     giveawayList.forEach((e) => e.click())
   }
 
+  function openall(){
+      document.querySelectorAll('#user-content-giveaways>a').forEach(a => {openInNewTab(a.href)})
+  }
+
   // Register the menu command
   GM_registerMenuCommand("Participate", participate);
   GM_registerMenuCommand("Socials", socials);
   GM_registerMenuCommand("Giveaway List", giveawayList);
+  GM_registerMenuCommand("Open ALL Links", openall);
   participate();
   socials();
 
