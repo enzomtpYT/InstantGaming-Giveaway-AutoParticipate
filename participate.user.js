@@ -13,51 +13,51 @@
 // @updateURL https://github.com/enzomtpYT/InstantGaming-Giveaway-AutoParticipate/raw/main/participate.user.js
 // ==/UserScript==
 
-(function() {
+(function () {
   "use strict";
 
-    if (!document.location.href.endsWith('?igr=enzomtp') && document.location.href.startsWith('https://www.instant-gaming.com/')) {
-        document.location.href = document.location.href+'?igr=enzomtp'
+  async function participate() {
+    try {
+      const participate = document.querySelector("button.button.validate");
+      if (participate !== null) {
+        console.log("Button 'Partecipate' was found. I'm clicking...");
+        participate.click();
+        await new Promise(resolve => setTimeout(resolve, 2000)); // Aspetta 2 secondi
+        location.reload();
+      } else {
+        console.log("Button 'Partecipate' wasn't found.");
+      }
+    } catch (error) {
+      console.error("Error when trying to participate:", error);
     }
+  }
+
+  async function socials() {
+    try {
+      const socials = document.querySelectorAll("a.button.reward.alerts");
+      socials.forEach((e) => e.click());
+    } catch (error) {
+      console.error("Error when trying to subscribe to socials:", error);
+    }
+  }
 
   function openInNewTab(url) {
-       window.open(url, '_blank');
+    window.open(url, '_blank');
   }
 
-  function participate(){
-    // Get the participate button element.
-    const participate = document.querySelector("button.button.validate");
-    // Click on participate if it exists.
-    if (participate !== null) {
-      participate.click();
-      location.reload();
+  async function openall() {
+    try {
+      document.querySelectorAll('#user-content-giveaways>a').forEach(a => {
+        openInNewTab(a.href);
+      });
+    } catch (error) {
+      console.error("Error when trying to execute openall:", error);
     }
   }
 
-  function socials(){
-    // Get all the socials
-    const socials = document.querySelectorAll("a.button.reward.alerts")
-    // Click on each socials
-    socials.forEach((e) => e.click())
-  }
-
-  function giveawayList(){
-    // Get the giveaway list
-    const giveawayList = document.querySelectorAll("a.giveaway")
-    // Click on the giveaway list
-    giveawayList.forEach((e) => e.click())
-  }
-
-  function openall(){
-      document.querySelectorAll('#user-content-giveaways>a').forEach(a => {openInNewTab(a.href)})
-  }
-
-  // Register the menu command
-  GM_registerMenuCommand("Participate", participate);
-  GM_registerMenuCommand("Socials", socials);
-  GM_registerMenuCommand("Giveaway List", giveawayList);
-  GM_registerMenuCommand("Open ALL Links", openall);
-  participate();
-  socials();
-
+  // Partecipate and subscribe to sicla with 2 seconds of delay
+  setTimeout(() => {
+    participate();
+    socials();
+  }, 2000);
 })();
