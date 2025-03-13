@@ -1,5 +1,7 @@
 # InstantGaming-Giveaway-AutoParticipate
 Userscript to automatically participate on Instant Gaming giveaways
+## Note:
+I've been reported multiple times that the script does not work properly on operaGX browser, please use another browser!
 ## Installation
 1- First install either [Greasemonkey](http://www.greasespot.net/) (Firefox) or [Tampermonkey](https://tampermonkey.net/) (Chromium based)
 
