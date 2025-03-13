@@ -17,7 +17,7 @@
   "use strict";
 
     if (!document.location.href.endsWith('?igr=enzomtp') && document.location.href.startsWith('https://www.instant-gaming.com/')) {
-        document.location.href = document.location.href+'?igr=enzomtp'
+        document.location.href = document.location.href+'?igr=jaha'
     }
 
   function openInNewTab(url) {
