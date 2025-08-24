@@ -26,13 +26,15 @@
     // Click on participate if it exists.
     if (participate !== null) {
       participate.click();
-      location.reload();
     }
+    setTimeout(() => {
+      socials();
+    }, 1000);
   }
 
   function socials(){
     // Get all the socials
-    const socials = document.querySelectorAll("a.button.reward.alerts")
+    const socials = document.querySelectorAll("a.button.reward.reward")
     // Click on each socials
     socials.forEach((e) => e.click())
   }
