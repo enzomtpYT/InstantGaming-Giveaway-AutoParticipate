@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Instant Gaming Auto Giveaway
 // @description  A script that automatically click on participate buttons on Instant-Gaming.
-// @version      1.4.4
+// @version      1.4.5
 // @author       enzomtp
 // @namespace    https://github.com/enzomtpYT/InstantGamingGiveawayList
 // @match        *://www.instant-gaming.com/*
@@ -16,8 +16,9 @@
 (function() {
   "use strict";
 
-    if (!document.location.href.endsWith('?igr=jaha') && document.location.href.startsWith('https://www.instant-gaming.com/')) {
-        document.location.href = document.location.href+'?igr=jaha'
+    if (!document.location.href.includes('igr=jaha') && document.location.href.startsWith('https://www.instant-gaming.com/')) {
+      const separator = document.location.href.includes('?') ? '&' : '?';
+      document.location.href = document.location.href + separator + 'igr=jaha';
     }
 
   function openInNewTab(url) {
