@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Instant Gaming Auto Giveaway
 // @description  A script that automatically click on participate buttons on Instant-Gaming.
-// @version      1.4.5
+// @version      1.4.6
 // @author       enzomtp
 // @namespace    https://github.com/enzomtpYT/InstantGamingGiveawayList
 // @match        *://www.instant-gaming.com/*
@@ -45,14 +45,29 @@
   }
 
   function giveawayList(){
-    // Get the giveaway list
-    const giveawayList = document.querySelectorAll("a.giveaway")
-    // Click on the giveaway list
-    giveawayList.forEach((e) => e.click())
+    // Open giveaway links from the new README layout, with fallback to legacy selectors.
+    getGiveawayLinks().forEach((a) => a.click())
   }
 
   function openall(){
-      document.querySelectorAll('#user-content-giveaways>a').forEach(a => {openInNewTab(a.href)})
+      getGiveawayLinks().forEach((a) => { openInNewTab(a.href); })
+  }
+
+  function getGiveawayLinks() {
+    const activeSummary = Array.from(document.querySelectorAll("details > summary")).find((summary) =>
+      summary.textContent.toLowerCase().includes("active giveaway links")
+    );
+
+    if (activeSummary) {
+      return activeSummary.parentElement.querySelectorAll('a[href*="/giveaway/"]');
+    }
+
+    const activeSectionLinks = document.querySelectorAll('#user-content-active-giveaways ~ details a[href*="/giveaway/"]');
+    if (activeSectionLinks.length > 0) {
+      return activeSectionLinks;
+    }
+
+    return document.querySelectorAll('#user-content-giveaways ~ p a, #user-content-giveaways>a, a.giveaway');
   }
 
   // Register the menu command
